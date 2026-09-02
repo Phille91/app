@@ -10,15 +10,15 @@
   },
   "dependencies": {
     "@storyblok/react": "^5.4.22",
-    "next": "16.1.6",
+    "next": "^16.3.4",
     "react": "^19.2.4",
     "react-dom": "^19.2.4"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
     "@netlify/plugin-nextjs": "^5.15.8",
-    "eslint": "^8.57.0",
-    "eslint-config-next": "16.1.6",
+    "eslint": "^9",
+    "eslint-config-next": "^16.3.4",
     "@tailwindcss/postcss": "^4",
     "tailwindcss": "^4",
     "postcss": "^8"

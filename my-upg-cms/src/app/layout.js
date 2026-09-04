@@ -1,5 +1,7 @@
 import './globals.css';
 import StoryblokProvider from '@/components/StoryblokProvider';
+import Header from '@/components/Header';
+import Footer from '@/components/Footer';
 
 export const metadata = {
 	title: 'Create Next App',
@@ -7,13 +9,13 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
-	const currentYear = new Date().getFullYear();
 	return (
 		<StoryblokProvider>
 			<html lang="en">
-				<body className="bg-amber-50 text-gray-800 max-w-3xl mx-auto">
-					{children}
-					<footer>All rights reserved © {currentYear} </footer>
+				<body className="bg-amber-50 text-gray-800">
+					<Header />
+					<div className="max-w-3xl mx-auto">{children}</div>
+					<Footer />
 				</body>
 			</html>
 		</StoryblokProvider>

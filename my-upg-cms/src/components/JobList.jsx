@@ -16,75 +16,43 @@ export default async function JobList({ blok, query = "" }) {
   const stories = data.stories;
 
   return (
-    <section className="job-list" {...storyblokEditable(blok)}>
-      <style>{`
-        .job-list {
-          max-width: 800px;
-          margin: 40px auto;
-        }
-
-        .job-list article {
-          display: flex;
-          gap: 20px;
-          padding: 20px 0;
-          border-bottom: 1px solid #444;
-        }
-
-        .job-list img {
-          width: 160px;
-          height: 100px;
-          object-fit: cover;
-          border-radius: 6px;
-        }
-
-        .job-list h2 {
-          margin: 0 0 8px;
-        }
-
-        .job-list h2 a {
-          color: #f0f0f0;
-          text-decoration: none;
-        }
-
-        .job-list p {
-          color: #bbb;
-          margin: 5px 0;
-        }
-
-        .job-list .author {
-          font-size: 14px;
-        }
-      `}</style>
-
+    <section className="max-w-3xl mx-auto my-10 space-y-4" {...storyblokEditable(blok)}>
       {blok.heading && <h1>{blok.heading}</h1>}
 
       <h2>{blok.title}</h2>
       <h3>{blok.summary}</h3>
-      
+
       {stories.length === 0 ? (
         <p>{blok.empty_text || "Inga inlägg."}</p>
       ) : (
         stories.map((story) => (
-          <article key={story.uuid}>
+          <article
+            key={story.uuid}
+            className="flex gap-5 p-4 border border-gray-300 rounded-lg bg-white"
+          >
             {story.content.coverImage?.filename && (
               <img
+                className="w-40 h-24 object-cover rounded-md"
                 src={story.content.coverImage.filename}
                 alt={story.content.coverImage.alt || story.content.title}
               />
             )}
 
             <div>
-              <h2>
-                <Link href={`/${story.full_slug}`}>
+              <h2 className="font-bold">
+                <Link
+                  className="text-red-700 no-underline"
+                  href={`/${story.full_slug}`}
+                >
                   {story.content.title}
                 </Link>
               </h2>
 
-              <p>{story.content.summary}</p>
-              <p>{story.content.department}</p>
-              <p>{story.content.location}</p>
+              <p className="text-gray-600">{story.content.summary}</p>
+              <p className="text-gray-600">{story.content.department}</p>
+              <p className="text-gray-600">{story.content.location}</p>
               {story.content.author?.content?.name && (
-                <p className="author">
+                <p className="text-gray-500 text-sm">
                   Av {story.content.author.content.name}
                 </p>
               )}

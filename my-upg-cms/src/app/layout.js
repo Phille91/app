@@ -11,7 +11,7 @@ export default function RootLayout({ children }) {
 	return (
 		<StoryblokProvider>
 			<html lang="en">
-				<body>
+				<body className="bg-amber-50 text-gray-800 max-w-3xl mx-auto">
 					{children}
 					<footer>All rights reserved © {currentYear} </footer>
 				</body>

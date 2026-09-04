@@ -12,7 +12,7 @@ export default function RootLayout({ children }) {
 	return (
 		<StoryblokProvider>
 			<html lang="en">
-				<body className="bg-linear-to-b from-amber-50 to-stone-200 text-gray-800">
+				<body className="bg-linear-to-b from-amber-50 to-stone-200 text-gray-800 mx-auto">
 					<Header />
 					<div className="max-w-3xl mx-auto">{children}</div>
 					<Footer />

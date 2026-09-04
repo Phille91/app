@@ -1,9 +1,15 @@
-import Link from "next/link";
+import { storyblokEditable } from "@storyblok/react/rsc";
 
-export default function NavLink({ href, children }) {
+export default function NavLink({ blok }) {
+  const url = blok.link?.cached_url || blok.link?.url || "#";
+  const href =
+    blok.link?.linktype === "story" && !url.startsWith("/") ? `/${url}` : url;
+
   return (
-    <Link href={href} className="text-gray-700 hover:text-red-700 font-medium">
-      {children}
-    </Link>
+    <li {...storyblokEditable(blok)}>
+      <a href={href} className="hover:text-blue-400 hover:underline">
+        {blok.label}
+      </a>
+    </li>
   );
 }

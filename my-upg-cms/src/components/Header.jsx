@@ -1,14 +1,18 @@
-import NavLink from "./NavLink";
+import { storyblokEditable, StoryblokServerComponent } from "@storyblok/react/rsc";
 
-export default function Header() {
+export default function Header({ blok }) {
   return (
-    <header className="border-b border-red-700/40">
-      <div className="max-w-3xl mx-auto flex items-center justify-end p-4">
-        <nav className="flex gap-6">
-          <NavLink href="/">Hem</NavLink>
-          <NavLink href="/jobs">Jobb</NavLink>
-        </nav>
-      </div>
+    <header {...storyblokEditable(blok)} className="flex items-center justify-between px-6 py-4 border-b border-gray-700">
+      {blok.logo?.filename && (
+        <img src={blok.logo.filename} alt="Logotyp" className="h-8 w-auto" />
+      )}
+      <nav>
+        <ul className="flex items-center gap-6">
+          {blok.navigation?.map((navBlok) => (
+            <StoryblokServerComponent blok={navBlok} key={navBlok._uid} />
+          ))}
+        </ul>
+      </nav>
     </header>
   );
 }
